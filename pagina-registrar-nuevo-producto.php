@@ -32,6 +32,7 @@ nav {
     justify-content: space-between;
     padding: 0 24px;
     border-bottom: 1px solid var(--very-light-pink);
+    z-index: 1;
 }
 
 .menu {
@@ -116,9 +117,13 @@ nav {
 
 .form_container {
     width: 100%;
-    height: 100vh;
-    display: grid;
+    height: 100px;
+    display: grid; 
     place-items: center;
+    position: relative;
+     top: -200px;
+    /* left: 50vh; */
+    z-index: 2;
 }
 
 .form_content {
@@ -131,22 +136,36 @@ nav {
 }
 
 .manejo_de_datos {
-    display: flex;
+    display: grid;
+    width: 400px;
 }
 
-.cuadro_de_busqueda {
+.cuadro_de_formulario {
     width: 100%;
     height: 32px;
     border: 1px solid black;
-    border-radius: 12px 0 0 12px;
+    border-radius: 12px;
     padding-left: 12px;
+    padding-right: 12px;
 }
 
+textarea {
+    resize: none;
+}
 
+#cuadro_de_descripcion {
+    padding-top: 12px;
+    height: 200px ;
+}
 .boton_buscador {
+    margin-top: 50px;
     background-color: #bfc3c6;
     border: 1px solid black;
-    border-radius: 0 12px 12px 0;
+    border-radius: 12px;
+    width: 70%;
+    height: 30px;
+    position: relative;
+    left: 70px;
 }
 
 .boton_buscador:hover {
@@ -221,15 +240,29 @@ nav {
     <div class="form_container">
         <div class="form_content">
             <div class="title">
-                <h1>Buscador de productos</h1>
+                <h1>Registrar un nuevo producto</h1>
             </div>
             <form class="form" action="" method="get">
-                <p>Escriba el término de búsqueda</p>
+                <p>Ingrese la información del producto</p>
                 <div class="manejo_de_datos">
-                    <input type="text" class="cuadro_de_busqueda" id="cuadro_de_busqueda" name="cuadro_de_busqueda"
-                        placeholder="Buscar">
+                    <p>Código del producto:</p>
+                    <input type="text" class="cuadro_de_formulario" id="cuadro_de_busqueda" name="cuadro_de_busqueda"
+                        placeholder="Código">
+
+                    <p>Descripción del producto:</p>
+                    <textarea class="cuadro_de_formulario" id="cuadro_de_descripcion" name="cuadro_de_busqueda"
+                        placeholder="Descripción"></textarea>
+
+                    <p>Precio del producto:</p>
+                    <input type="number" step="0.01" class="cuadro_de_formulario" id="cuadro_de_busqueda" name="cuadro_de_busqueda"
+                        placeholder="Precio en Bolivianos (Bs.)">
+
+                    <p>Fecha de registro:</p>
+                    <input type="date" class="cuadro_de_formulario" id="cuadro_de_busqueda" name="cuadro_de_busqueda"
+                        placeholder="Fecha">
+
                     <input type="submit" class="boton_buscador" id="boton_buscador" name="boton_buscador"
-                        value="Buscar">
+                        value="Registrar">
                 </div>
             </form>
 
@@ -257,7 +290,7 @@ nav {
         }
         </script>
 
-<?php
+        <?php
 
     include("buscarProducto.php");
     //buscar (peticion);
